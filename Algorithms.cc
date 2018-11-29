@@ -1,7 +1,6 @@
 #include "Algorithms.h"
 
-Algorithms::Algorithms()
-{
+Algorithms::Algorithms(){
 }
 
 /* Algorithm for Calculating the sum of two complex numbers
@@ -43,4 +42,9 @@ complex<double> Algorithms::getProduct(complex<double> myComplex1, complex<doubl
 
     // Return the temp variable
     return temp;
+}
+
+double Algorithms::getMod(complex<double> myComplex){
+
+    return abs(myComplex);
 }

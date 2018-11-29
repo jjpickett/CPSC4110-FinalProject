@@ -13,6 +13,7 @@ class Algorithms
     
     complex<double> getSum(complex<double> myComplex1, complex<double> myComplex2);
     complex<double> getProduct(complex<double> myComplex1, complex<double> myComplex2);
+    double getMod(complex<double> myComplex);
 
     virtual ~Algorithms(){};
 
