@@ -1,22 +1,20 @@
 CC = g++
-CCFLAGS = -Wall
-PRJ = quantum
-OBJS = main.o
-HEAD = 
+CCFLAGS = -std=c++11 -Wall
+PRJ = main
+OBJS = main.o Algorithms.o
+HEAD = Algorithms.h
 
 ## targets and prerequisites
 
 $(PRJ): $(OBJS)             ## next line must begin with a TAB
 		$(CC) $(OBJS) -o $(PRJ) 
-		
-		./quantum
+		./main
 
 # rule for compiling .cc to .o
 %.o : %.cc                  ## next line must begin with a TAB
-		$(CC) -c $(CCFLAGS) $< 
+		$(CC) -c $(CCFLAGS) $<
 
 $(OBJS):$(HEAD)             ## no executable, the previous rule is used
-
 
 
 .PHONY: clean
