@@ -3,10 +3,9 @@
 #include "Algorithms.h"
 using namespace std;
 
-/** This is a test for Summing Complex numbers
+/** This is a test for Summing complex numbers
 */
-void sumTest()
-{
+void sumTest(){
     Algorithms algo;
 
     double rNum1, iNum1, rNum2, iNum2;
@@ -25,10 +24,9 @@ void sumTest()
     cout << "The sum of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
 }
 
-/** This is a test for Multiplying Complex numbers
+/** This is a test for Multiplying complex numbers
 */
-void productTest()
-{
+void productTest(){
     Algorithms algo;
 
     double rNum1, iNum1, rNum2, iNum2;
@@ -44,18 +42,59 @@ void productTest()
 
     cNumAns = algo.getProduct(cNum1, cNum2);
 
-    cout << "The product1 4 of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
+    cout << "The product of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
+}
+
+/** This is a test for getting the Modulo of a complex number
+*/
+void modTest(){
+    Algorithms algo;
+
+    double rNum, iNum;
+
+    cout << "Please input the complex number as 10 2 (10+2i) " << endl;
+    cin >> rNum >> iNum;
+
+    complex<double> cNum(rNum, iNum);
+
+    cout << "The Modulo of the complex numbers is: " << algo.getMod(cNum) << endl;
+}
+
+/** This is a test for getting the Conjugate of a complex number
+*/
+void conjTest(){
+    Algorithms algo;
+
+    double rNum, iNum;
+    cout << "Please input first complex number as 10 2 (10+2i) " << endl;
+    cin >> rNum >> iNum;
+
+    complex<double> cNum(rNum, iNum);
+
+    complex<double> cNumAns;
+
+    cNumAns = algo.getConj(cNum);
+
+    cout << "The conjugate of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
 }
 
 // driver function
 int main()
 {
 
+    // ***** Uncomment the function to test capability
+
     //cout << "Sum Test" << endl;
     //sumTest();
 
-    cout << "Product Test" << endl;
-    productTest();
+    // cout << "Product Test" << endl;
+    // productTest();
+    
+    // cout << "Mod Test" << endl;
+    // modTest();
+
+    // cout << "Conj Test" << endl;
+    // conjTest();
 
     return 0;
 }

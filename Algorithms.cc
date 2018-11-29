@@ -1,10 +1,9 @@
 #include "Algorithms.h"
 
-Algorithms::Algorithms()
-{
+Algorithms::Algorithms(){
 }
 
-/* Algorithm for Calculating the sum of two complex numbers
+/* Algorithm for calculating the sum of two complex numbers
  */
 complex<double> Algorithms::getSum(complex<double> myComplex1, complex<double> myComplex2){
     // Instantiate the Real Number and the Imaginary Number
@@ -22,7 +21,7 @@ complex<double> Algorithms::getSum(complex<double> myComplex1, complex<double> m
     return temp;
 }
 
-/* Algorithm for Calculating the product of two complex numbers
+/* Algorithm for calculating the product of two complex numbers
  */
 complex<double> Algorithms::getProduct(complex<double> myComplex1, complex<double> myComplex2){
     // Instantiate the Real Number and the Imaginary Number
@@ -43,4 +42,18 @@ complex<double> Algorithms::getProduct(complex<double> myComplex1, complex<doubl
 
     // Return the temp variable
     return temp;
+}
+
+/* Algorithm for return the modulus of a complex number
+ */
+double Algorithms::getMod(complex<double> myComplex){
+    // return the absolute of a complex number (same as modulus)
+    return abs(myComplex);
+}
+
+/* Algorithm for return the conjugate of a complex number
+ */
+complex<double> Algorithms::getConj(complex<double> myComplex){
+    // return the absolute of a complex number (same as modulus)
+    return conj(myComplex);
 }
