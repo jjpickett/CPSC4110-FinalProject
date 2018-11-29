@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <complex>
 
 using namespace std;
 
@@ -11,7 +11,8 @@ class Algorithms
   public:
     Algorithms();
     
-    int getNum();
+    complex<double> getSum(complex<double> myComplex1, complex<double> myComplex2);
+    complex<double> getProduct(complex<double> myComplex1, complex<double> myComplex2);
 
     virtual ~Algorithms(){};
 
