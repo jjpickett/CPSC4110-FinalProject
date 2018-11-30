@@ -78,6 +78,44 @@ void conjTest(){
     cout << "The conjugate of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
 }
 
+/** This is a test for getting the Conjugate of a complex number
+*/
+void vectorDotProductTest(){
+    Algorithms algo;
+    // double , 0;
+    // bool isInputting = true;
+    vector<complex<double>> vectorOne;
+    vector<complex<double>> vectorTwo;
+
+    // cout << "Please input first complex number as 10 2 (10+2i) " << endl;
+    // do {
+        // cin >> rNum >> iNum;
+        // complex<double> cNum(rNum, iNum);
+        // vectorOne.push_back(cNum);
+    // }
+    // while(isInputting);
+    
+    complex<double> cNum1(1, 0);
+    complex<double> cNum2(0, 2);
+    complex<double> cNum3(3, 0);
+    complex<double> cNum4(4, 0);
+    complex<double> cNum5(5, 0);
+    complex<double> cNum6(6, 0);
+
+    vectorOne.push_back(cNum1);
+    vectorOne.push_back(cNum2);
+    vectorOne.push_back(cNum3);
+    vectorTwo.push_back(cNum4);
+    vectorTwo.push_back(cNum5);
+    vectorTwo.push_back(cNum6);
+
+    complex<double> cNumAns;
+
+    cNumAns = algo.getDotProductVector(vectorOne, vectorTwo);
+
+    cout << "The dot-product of the two vectors is: " << real(cNumAns) << " + " << imag(cNumAns) << "i" << endl;
+}
+
 // driver function
 int main()
 {
@@ -95,6 +133,9 @@ int main()
 
     // cout << "Conj Test" << endl;
     // conjTest();
+    
+    cout << "Vector Dot-Product Test" << endl;
+    vectorDotProductTest();
 
     return 0;
 }
