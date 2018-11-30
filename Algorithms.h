@@ -1,5 +1,6 @@
 #include <iostream>
 #include <complex>
+#include <vector>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Algorithms
     complex<double> getProduct(complex<double> myComplex1, complex<double> myComplex2);
     double getMod(complex<double> myComplex);
     complex<double> getConj(complex<double> myComplex);
+    vector<complex<double>> getDotProductVector(vector<complex<double>> vectorOne, vector<complex<double>> vectorTwo);
 
     virtual ~Algorithms(){};
 

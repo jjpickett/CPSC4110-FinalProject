@@ -57,3 +57,11 @@ complex<double> Algorithms::getConj(complex<double> myComplex){
     // return the absolute of a complex number (same as modulus)
     return conj(myComplex);
 }
+
+/* Algorithm that calculates the dot-product of two n-dimension complex vectors 
+*/
+vector<complex<double>> Algorithms::getDotProductVector(vector<complex<double>> vectorOne, vector<complex<double>> vectorTwo){
+    vector<complex<double>> result; 
+    
+    return result;
+}
