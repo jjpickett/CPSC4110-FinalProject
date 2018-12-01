@@ -1,6 +1,8 @@
 // Program illustrating the use of real() and
 // imag() function
 #include "Algorithms.h"
+#include <iomanip>
+#include <string>
 using namespace std;
 
 /** This is a test for Summing complex numbers
@@ -115,6 +117,65 @@ void vectorDotProductTest(){
     cout << "The dot-product of the two vectors is: " << real(cNumAns) << " + " << imag(cNumAns) << "i" << endl;
 }
 
+void matrixAdditionTest(){
+    Algorithms algo;
+
+    int rows, columns;
+    double rNum, iNum;
+
+    cout << "Enter number of rows: ";
+    cin >> rows;
+
+    cout << "Enter number of columns: ";
+    cin >> columns;
+
+    vector<vector<complex<double>>> matrixOne(rows);
+    vector<vector<complex<double>>> matrixTwo(rows);
+
+    cout << endl << "Enter values for the first matrix: " << endl;
+    
+    // Storing elements of first matrix entered by user.
+    for(int i = 0; i < rows; ++i) {    
+        for(int j = 0; j < columns; ++j)
+        {
+            cout << "Enter firstMatrix[" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+            cin >> rNum >> iNum;
+            complex<double> cNum(rNum, iNum);
+            matrixOne[i].push_back(cNum);
+        }
+    }  
+
+    // Storing elements of second matrix entered by user.
+    cout << endl << "Enter elements of 2nd matrix: " << endl;
+    for(int i = 0; i < rows; ++i) {
+       for(int j = 0; j < columns; ++j)
+       {
+            cout << "Enter secondMatrix[" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+            cin >> rNum >> iNum;
+            complex<double> cNum(rNum, iNum);
+            matrixTwo[i].push_back(cNum);
+       }
+    }
+    cout << endl;
+
+    vector<vector<complex<double>>> resultMatrix;
+
+    resultMatrix = algo.getMatrixAddition(matrixOne, matrixTwo);
+
+    cout << "Resulting Matrix:" << endl;
+
+    for(int i = 0; i < rows; ++i) {
+       for(int j = 0; j < columns; ++j)
+       {
+            ostringstream rStream, iStream;
+            rStream << real(resultMatrix[i][j]) << " + ";
+            iStream << imag(resultMatrix[i][j]) << 'i';
+
+            cout << right << setw(8) << rStream.str() << left << setw(8) << iStream.str();
+       }
+       cout << endl;
+    }
+}
 // driver function
 int main()
 {
@@ -136,6 +197,14 @@ int main()
     // try {
     //     cout << "Vector Dot-Product Test" << endl;
     //     vectorDotProductTest();
+    // }
+    // catch (runtime_error e) {
+    //     cout << e.what() << endl;
+    // }
+
+    // try {
+    //     cout << "Matrix Addition Test" << endl;
+    //     matrixAdditionTest();
     // }
     // catch (runtime_error e) {
     //     cout << e.what() << endl;

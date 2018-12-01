@@ -77,3 +77,28 @@ complex<double> Algorithms::getDotProductVector(vector<complex<double>> vectorOn
         throw runtime_error("Error: Vectors must have the same dimensions in order to perform dot product"); 
     }
 }
+
+/* Algorithm that calculates the result of matrix addition 
+*/
+vector<vector<complex<double>>> Algorithms::getMatrixAddition(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo) {
+    // Get the size of the matrices to add
+    int columns = matrixOne[0].size(), 
+        rows = matrixOne.size();
+
+    // Matrix to store the result of the additon in
+    vector<vector<complex<double>>> resultMatrix(rows);
+
+    // Check to ensure matrices are the same size
+    if(columns == matrixTwo[0].size() && rows == matrixTwo.size()) {        
+        // Adding Two matrices
+        for(int i = 0; i < rows; ++i) {
+            for(int j = 0; j < columns; ++j) {
+                resultMatrix[i].push_back(getSum(matrixOne[i][j], matrixTwo[i][j]));
+            }
+        }
+        return resultMatrix;
+    }
+    else {
+        throw runtime_error("Error: Matrices must have the same dimensions in order add");
+    }
+}
