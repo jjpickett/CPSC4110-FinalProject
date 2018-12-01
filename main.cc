@@ -1,15 +1,17 @@
 // Program illustrating the use of real() and
 // imag() function
 #include "Algorithms.h"
+#include "Utils.h"
 #include <iomanip>
 #include <string>
 using namespace std;
 
+Algorithms algo;
+Utils utils;
+
 /** This is a test for Summing complex numbers
 */
 void sumTest(){
-    Algorithms algo;
-
     double rNum1, iNum1, rNum2, iNum2;
     cout << "Please input first complex number as 10 2 (10+2i) " << endl;
     cin >> rNum1 >> iNum1;
@@ -29,8 +31,6 @@ void sumTest(){
 /** This is a test for Multiplying complex numbers
 */
 void productTest(){
-    Algorithms algo;
-
     double rNum1, iNum1, rNum2, iNum2;
     cout << "Please input first complex number as 10 2 (10+2i) " << endl;
     cin >> rNum1 >> iNum1;
@@ -50,8 +50,6 @@ void productTest(){
 /** This is a test for getting the Modulo of a complex number
 */
 void modTest(){
-    Algorithms algo;
-
     double rNum, iNum;
 
     cout << "Please input the complex number as 10 2 (10+2i) " << endl;
@@ -65,8 +63,6 @@ void modTest(){
 /** This is a test for getting the Conjugate of a complex number
 */
 void conjTest(){
-    Algorithms algo;
-
     double rNum, iNum;
     cout << "Please input first complex number as 10 2 (10+2i) " << endl;
     cin >> rNum >> iNum;
@@ -83,8 +79,6 @@ void conjTest(){
 /** This is a test for getting the Conjugate of a complex number
 */
 void vectorDotProductTest(){
-    Algorithms algo;
-    
     vector<complex<double>> vectorOne;
     vector<complex<double>> vectorTwo;
 
@@ -118,8 +112,6 @@ void vectorDotProductTest(){
 }
 
 void matrixAdditionTest(){
-    Algorithms algo;
-
     int rows, columns;
     double rNum, iNum;
 
@@ -167,47 +159,102 @@ void matrixAdditionTest(){
     for(int i = 0; i < rows; ++i) {
        for(int j = 0; j < columns; ++j)
        {
-            ostringstream iStream;
-            iStream << imag(resultMatrix[i][j]) << 'i';
-
-            cout << right << setw(8) << real(resultMatrix[i][j]) << " + " << left << setw(8) << iStream.str();
+            cout << utils.printComplexNumber(resultMatrix[i][j]);
        }
        cout << endl;
     }
 }
+
+void matrixMultiplicationTest(){
+    int matrixOneRows, matrixOneColumns,
+        matrixTwoRows, matrixTwoColumns;
+    double rNum, iNum;
+
+    cout << "Enter number of rows for Matrix One: ";
+    cin >> matrixOneRows;
+
+    cout << "Enter number of columns for Matrix One: ";
+    cin >> matrixOneColumns;
+    
+    cout << "Enter number of rows for Matrix Two: ";
+    cin >> matrixTwoRows;
+
+    cout << "Enter number of columns for Matrix Two: ";
+    cin >> matrixTwoColumns;
+
+    vector<vector<complex<double>>> matrixOne(matrixOneRows);
+    vector<vector<complex<double>>> matrixTwo(matrixTwoRows);
+
+    cout << endl << "Enter values for the first matrix: " << endl;
+    
+    // Storing elements of first matrix entered by user.
+    for(int i = 0; i < matrixOneRows; ++i) {    
+        for(int j = 0; j < matrixOneColumns; ++j)
+        {
+            cout << "Enter value for Matrix One [" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+            cin >> rNum >> iNum;
+            complex<double> cNum(rNum, iNum);
+            matrixOne[i].push_back(cNum);
+        }
+    }  
+
+    // Storing elements of second matrix entered by user.
+    cout << endl << "Enter value for Matrix Two: " << endl;
+    for(int i = 0; i < matrixTwoRows; ++i) {
+       for(int j = 0; j < matrixTwoColumns; ++j)
+       {
+            cout << "Enter secondMatrix[" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+            cin >> rNum >> iNum;
+            complex<double> cNum(rNum, iNum);
+            matrixTwo[i].push_back(cNum);
+       }
+    }
+    cout << endl;
+
+    vector<vector<complex<double>>> resultMatrix;
+
+    resultMatrix = algo.getMatrixMultiplication(matrixOne, matrixTwo);
+
+    cout << "Resulting Matrix:" << endl;
+
+    for(size_t i = 0; i < resultMatrix.size(); ++i) {
+       for(size_t j = 0; j < resultMatrix[0].size(); ++j)
+       {
+            cout << utils.printComplexNumber(resultMatrix[i][j]);
+       }
+       cout << endl;
+    }
+}
+
 // driver function
 int main()
 {
-
     // ***** Uncomment the function to test capability
+    try {
+        // cout << "Sum Test" << endl;
+        // sumTest();
 
-    //cout << "Sum Test" << endl;
-    //sumTest();
+        // cout << "Product Test" << endl;
+        // productTest();
+        
+        // cout << "Mod Test" << endl;
+        // modTest();
 
-    // cout << "Product Test" << endl;
-    // productTest();
-    
-    // cout << "Mod Test" << endl;
-    // modTest();
+        // cout << "Conj Test" << endl;
+        // conjTest();
+        
+        // cout << "Vector Dot-Product Test" << endl;
+        // vectorDotProductTest();
+        
+        // cout << "Matrix Addition Test" << endl;
+        // matrixAdditionTest();
 
-    // cout << "Conj Test" << endl;
-    // conjTest();
-    
-    // try {
-    //     cout << "Vector Dot-Product Test" << endl;
-    //     vectorDotProductTest();
-    // }
-    // catch (runtime_error e) {
-    //     cout << e.what() << endl;
-    // }
-
-    // try {
-    //     cout << "Matrix Addition Test" << endl;
-    //     matrixAdditionTest();
-    // }
-    // catch (runtime_error e) {
-    //     cout << e.what() << endl;
-    // }
+        // cout << "Matrix Multiplication Test" << endl;
+        // matrixMultiplicationTest();
+    }
+    catch (runtime_error e) {
+        cout << e.what() << endl;
+    }
 
     return 0;
 }

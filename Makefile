@@ -1,8 +1,8 @@
 CC = g++
 CCFLAGS = -std=c++11 -Wall
 PRJ = main
-OBJS = main.o Algorithms.o
-HEAD = Algorithms.h
+OBJS = main.o Algorithms.o Utils.o
+HEAD = Algorithms.h Utils.h
 
 ## targets and prerequisites
 

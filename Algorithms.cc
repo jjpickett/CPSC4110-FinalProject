@@ -102,3 +102,34 @@ vector<vector<complex<double>>> Algorithms::getMatrixAddition(vector<vector<comp
         throw runtime_error("Error: Matrices must have the same dimensions in order add");
     }
 }
+
+/* Algorithm that calculates the result of matrix multiplication 
+*/
+vector<vector<complex<double>>> Algorithms::getMatrixMultiplication(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo) {
+    // Get the size of the matrices to multiply
+    size_t  matrixOneRows = matrixOne.size(),
+            matrixOneColumns = matrixOne[0].size(), 
+            matrixTwoRows = matrixTwo.size(),
+            matrixTwoColumns = matrixTwo[0].size(); 
+
+    // Matrix to store the result of the multiplication in
+    vector<vector<complex<double>>> resultMatrix(matrixOneRows);
+
+    // Check to ensure matrices are able to be multiplied
+    if(matrixOneColumns == matrixTwoRows) {        
+        // Multiplying two matrices
+        for(size_t i = 0; i < matrixOneRows; ++i) {
+            for(size_t j = 0; j < matrixTwoColumns; ++j) {
+                complex<double> sum;
+                for(size_t k = 0; k < matrixOneColumns; ++k) {
+                    sum = getSum(sum, getProduct(matrixOne[i][k], matrixTwo[k][j]));
+                }
+                resultMatrix[i].push_back(sum);
+            }
+        }
+        return resultMatrix;
+    }
+    else {
+        throw runtime_error("Error: # of columns in Matrix One must equal # of rows in Matrix Two");
+    }
+}
