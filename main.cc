@@ -82,19 +82,10 @@ void conjTest(){
 */
 void vectorDotProductTest(){
     Algorithms algo;
-    // double , 0;
-    // bool isInputting = true;
+    
     vector<complex<double>> vectorOne;
     vector<complex<double>> vectorTwo;
 
-    // cout << "Please input first complex number as 10 2 (10+2i) " << endl;
-    // do {
-        // cin >> rNum >> iNum;
-        // complex<double> cNum(rNum, iNum);
-        // vectorOne.push_back(cNum);
-    // }
-    // while(isInputting);
-    
     complex<double> cNum1(1, 0);
     complex<double> cNum2(0, 2);
     complex<double> cNum3(3, 0);
@@ -134,8 +125,13 @@ int main()
     // cout << "Conj Test" << endl;
     // conjTest();
     
-    cout << "Vector Dot-Product Test" << endl;
-    vectorDotProductTest();
+    // try {
+    //     cout << "Vector Dot-Product Test" << endl;
+    //     vectorDotProductTest();
+    // }
+    // catch (runtime_error e) {
+    //     cout << e.what() << endl;
+    // }
 
     return 0;
 }

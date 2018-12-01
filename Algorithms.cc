@@ -61,20 +61,19 @@ complex<double> Algorithms::getConj(complex<double> myComplex){
 /* Algorithm that calculates the dot-product of two n-dimension complex vectors 
 */
 complex<double> Algorithms::getDotProductVector(vector<complex<double>> vectorOne, vector<complex<double>> vectorTwo){
+    // Instantiate the result of the dot product
     complex<double> result = 0; 
 
-    try {
-        if (vectorOne.size() == vectorTwo.size()) {
-            for(int i=0; i < vectorOne.size(); i++) {
-                result = getSum(result, getProduct(vectorOne.at(i), vectorTwo.at(i)));
-            }
-            return result;
+    // Ensure vectors are the same size
+    if (vectorOne.size() == vectorTwo.size()) {
+        
+        // Calculate the dot-product of the two vectors
+        for(int i=0; i < vectorOne.size(); i++) {
+            result = getSum(result, getProduct(vectorOne.at(i), vectorTwo.at(i)));
         }
-        else {
-            throw "Vectors must have the same dimensions in order to perform dot product"; 
-        }
-    } 
-    catch(exception e) {
-        cerr << e.what();
+        return result;
+    }
+    else {
+        throw runtime_error("Error: Vectors must have the same dimensions in order to perform dot product"); 
     }
 }
