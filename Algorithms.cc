@@ -68,7 +68,7 @@ complex<double> Algorithms::getDotProductVector(vector<complex<double>> vectorOn
     if (vectorOne.size() == vectorTwo.size()) {
         
         // Calculate the dot-product of the two vectors
-        for(int i=0; i < vectorOne.size(); i++) {
+        for(size_t i=0; i < vectorOne.size(); i++) {
             result = getSum(result, getProduct(vectorOne.at(i), vectorTwo.at(i)));
         }
         return result;
@@ -82,7 +82,7 @@ complex<double> Algorithms::getDotProductVector(vector<complex<double>> vectorOn
 */
 vector<vector<complex<double>>> Algorithms::getMatrixAddition(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo) {
     // Get the size of the matrices to add
-    int columns = matrixOne[0].size(), 
+    size_t columns = matrixOne[0].size(), 
         rows = matrixOne.size();
 
     // Matrix to store the result of the additon in
@@ -91,8 +91,8 @@ vector<vector<complex<double>>> Algorithms::getMatrixAddition(vector<vector<comp
     // Check to ensure matrices are the same size
     if(columns == matrixTwo[0].size() && rows == matrixTwo.size()) {        
         // Adding Two matrices
-        for(int i = 0; i < rows; ++i) {
-            for(int j = 0; j < columns; ++j) {
+        for(size_t i = 0; i < rows; ++i) {
+            for(size_t j = 0; j < columns; ++j) {
                 resultMatrix[i].push_back(getSum(matrixOne[i][j], matrixTwo[i][j]));
             }
         }
