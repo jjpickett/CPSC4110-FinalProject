@@ -80,11 +80,11 @@ void conjTest(){
     cout << "The conjugate of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
 }
 
-/** This is a test for getting the Conjugate of a complex number
+/** This is a test for getting the Dot Product of a complex vectors
 */
 void vectorDotProductTest(){
     Algorithms algo;
-    
+
     vector<complex<double>> vectorOne;
     vector<complex<double>> vectorTwo;
 
@@ -95,7 +95,8 @@ void vectorDotProductTest(){
     cin >> size;
 
     // Storing elements of first vector entered by user.
-    for(int i = 0; i < size; ++i){
+    for (int i = 0; i < size; ++i)
+    {
         cout << "Enter element " << i + 1 << " for vector one as 10 2 (10+2i): ";
         cin >> rNum >> iNum;
         complex<double> cNum(rNum, iNum);
@@ -103,7 +104,8 @@ void vectorDotProductTest(){
     }
 
     // Storing elements of second vector entered by user.
-    for(int i = 0; i < size; ++i){
+    for (int i = 0; i < size; ++i)
+    {
         cout << "Enter element " << i + 1 << " for vector two as 10 2 (10+2i): ";
         cin >> rNum >> iNum;
         complex<double> cNum(rNum, iNum);
@@ -117,6 +119,8 @@ void vectorDotProductTest(){
     cout << "The dot-product of the two vectors is: " << real(cNumAns) << " + " << imag(cNumAns) << "i" << endl;
 }
 
+/** This is a test for getting the Matrix Addition of complex matrices
+*/
 void matrixAdditionTest(){
     Algorithms algo;
 
@@ -132,29 +136,33 @@ void matrixAdditionTest(){
     vector<vector<complex<double>>> matrixOne(rows);
     vector<vector<complex<double>>> matrixTwo(rows);
 
-    cout << endl << "Enter values for the first matrix: " << endl;
-    
+    cout << endl
+         << "Enter values for the first matrix: " << endl;
+
     // Storing elements of first matrix entered by user.
-    for(int i = 0; i < rows; ++i) {    
-        for(int j = 0; j < columns; ++j)
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < columns; ++j)
         {
-            cout << "Enter firstMatrix[" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+            cout << "Enter firstMatrix[" << i + 1 << "][" << j + 1 << "] as 10 2 (10+2i): ";
             cin >> rNum >> iNum;
             complex<double> cNum(rNum, iNum);
             matrixOne[i].push_back(cNum);
         }
-    }  
+    }
 
     // Storing elements of second matrix entered by user.
-    cout << endl << "Enter elements of 2nd matrix: " << endl;
-    for(int i = 0; i < rows; ++i) {
-       for(int j = 0; j < columns; ++j)
-       {
-            cout << "Enter secondMatrix[" << i + 1 <<"][" << j + 1 << "] as 10 2 (10+2i): ";
+    cout << endl
+         << "Enter elements of 2nd matrix: " << endl;
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < columns; ++j)
+        {
+            cout << "Enter secondMatrix[" << i + 1 << "][" << j + 1 << "] as 10 2 (10+2i): ";
             cin >> rNum >> iNum;
             complex<double> cNum(rNum, iNum);
             matrixTwo[i].push_back(cNum);
-       }
+        }
     }
     cout << endl;
 
@@ -164,16 +172,45 @@ void matrixAdditionTest(){
 
     cout << "Resulting Matrix:" << endl;
 
-    for(int i = 0; i < rows; ++i) {
-       for(int j = 0; j < columns; ++j)
-       {
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < columns; ++j)
+        {
             ostringstream iStream;
             iStream << imag(resultMatrix[i][j]) << 'i';
 
             cout << right << setw(8) << real(resultMatrix[i][j]) << " + " << left << setw(8) << iStream.str();
-       }
-       cout << endl;
+        }
+        cout << endl;
     }
+}
+
+/** This is a test for getting the Sum of a complex vector
+*/
+void complexVectorSumTest(){
+    Algorithms algo;
+
+    double rNum, iNum;
+    int vectorSize;
+    vector<complex<double>> complexVector;
+
+
+    cout << "Please input the size of your complex vector" << endl;
+    cin >> vectorSize;
+
+    for(int i = 0; i < vectorSize; i++){
+        cout << "Please input a complex number as 10 2 (10+2i) " << endl;
+        cin >> rNum >> iNum;
+        complex<double> temp(rNum, iNum);
+        complexVector.push_back(temp);
+    }
+
+    complex<double> cNumAns;
+
+    cNumAns = algo.getComplexVectorAddition(complexVector);
+
+    cout << "The sum of the complex numbers is: " << real(cNumAns) << " + (" << imag(cNumAns) << "i)" << endl;
+    
 }
 // driver function
 int main()
@@ -186,13 +223,13 @@ int main()
 
     // cout << "Product Test" << endl;
     // productTest();
-    
+
     // cout << "Mod Test" << endl;
     // modTest();
 
     // cout << "Conj Test" << endl;
     // conjTest();
-    
+
     // try {
     //     cout << "Vector Dot-Product Test" << endl;
     //     vectorDotProductTest();
@@ -208,6 +245,9 @@ int main()
     // catch (runtime_error e) {
     //     cout << e.what() << endl;
     // }
+
+    // cout << "Complex Vector Sum Test" << endl;
+    // complexVectorSumTest();
 
     return 0;
 }

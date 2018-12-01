@@ -18,6 +18,8 @@ class Algorithms
     complex<double> getConj(complex<double> myComplex);
     complex<double> getDotProductVector(vector<complex<double>> vectorOne, vector<complex<double>> vectorTwo);
     vector<vector<complex<double>>> getMatrixAddition(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo);
+    complex<double> getComplexVectorAddition(vector<complex<double>> complexVector);
+    
     virtual ~Algorithms(){};
 
     
