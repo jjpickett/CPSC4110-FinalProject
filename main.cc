@@ -86,19 +86,27 @@ void vectorDotProductTest(){
     vector<complex<double>> vectorOne;
     vector<complex<double>> vectorTwo;
 
-    complex<double> cNum1(1, 0);
-    complex<double> cNum2(0, 2);
-    complex<double> cNum3(3, 0);
-    complex<double> cNum4(4, 0);
-    complex<double> cNum5(5, 0);
-    complex<double> cNum6(6, 0);
+    int size;
+    double rNum, iNum;
 
-    vectorOne.push_back(cNum1);
-    vectorOne.push_back(cNum2);
-    vectorOne.push_back(cNum3);
-    vectorTwo.push_back(cNum4);
-    vectorTwo.push_back(cNum5);
-    vectorTwo.push_back(cNum6);
+    cout << "Enter the dimension of the vectors: ";
+    cin >> size;
+
+    // Storing elements of first vector entered by user.
+    for(int i = 0; i < size; ++i){
+        cout << "Enter element " << i + 1 << " for vector one as 10 2 (10+2i): ";
+        cin >> rNum >> iNum;
+        complex<double> cNum(rNum, iNum);
+        vectorOne.push_back(cNum);
+    }
+
+    // Storing elements of second vector entered by user.
+    for(int i = 0; i < size; ++i){
+        cout << "Enter element " << i + 1 << " for vector two as 10 2 (10+2i): ";
+        cin >> rNum >> iNum;
+        complex<double> cNum(rNum, iNum);
+        vectorTwo.push_back(cNum);
+    }
 
     complex<double> cNumAns;
 
