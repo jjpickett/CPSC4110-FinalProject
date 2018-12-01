@@ -167,11 +167,10 @@ void matrixAdditionTest(){
     for(int i = 0; i < rows; ++i) {
        for(int j = 0; j < columns; ++j)
        {
-            ostringstream rStream, iStream;
-            rStream << real(resultMatrix[i][j]) << " + ";
+            ostringstream iStream;
             iStream << imag(resultMatrix[i][j]) << 'i';
 
-            cout << right << setw(8) << rStream.str() << left << setw(8) << iStream.str();
+            cout << right << setw(8) << real(resultMatrix[i][j]) << " + " << left << setw(8) << iStream.str();
        }
        cout << endl;
     }
