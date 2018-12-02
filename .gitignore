@@ -1,4 +1,5 @@
 main.o
 Algorithms.o
+Utils.o
 .vscode/settings.json
 main.exe
