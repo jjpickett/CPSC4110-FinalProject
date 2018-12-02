@@ -7,8 +7,7 @@ using namespace std;
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
 
-class Algorithms
-{
+class Algorithms {
   public:
     Algorithms();
 
@@ -20,6 +19,7 @@ class Algorithms
     complex<double> getDotProductVector(vector<complex<double>> vectorOne, vector<complex<double>> vectorTwo);
     vector<vector<complex<double>>> getMatrixAddition(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo);
     vector<vector<complex<double>>> getMatrixMultiplication(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo);
+    vector<vector<complex<double>>> getTensorProduct(vector<vector<complex<double>>> matrixOne, vector<vector<complex<double>>> matrixTwo);
  
     virtual ~Algorithms(){};
     
