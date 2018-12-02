@@ -48,9 +48,10 @@ complex<double> Algorithms::getProduct(complex<double> myComplex1,
 
 /* Algorithm for return the modulus of a complex number
  */
-double Algorithms::getMod(complex<double> myComplex) {
+complex<double> Algorithms::getMod(complex<double> myComplex) {
   // return the absolute of a complex number (same as modulus)
-  return abs(myComplex);
+  complex<double> result(real(myComplex), imag(myComplex) * -1);
+  return result;
 }
 
 /* Algorithm for return the conjugate of a complex number
@@ -67,14 +68,17 @@ complex<double> Algorithms::getComplexVectorAddition(
   // Instantiate the Real Number and the Imaginary Number
   double rNum = 0, iNum = 0;
 
+  // Loop through the vector and add the real numbers together and the imaginary
+  // numbers together
   for (size_t i = 0; i < complexVector.size(); i++) {
     rNum += real(complexVector[i]);
     iNum += imag(complexVector[i]);
   }
 
-  // Apply the calculated Real and Imaginary numbers to temp variable
+  // Apply the calculated Real and Imaginary numbers to result variable
   complex<double> result(rNum, iNum);
 
+  // Return Result
   return result;
 }
 
@@ -191,4 +195,33 @@ vector<vector<complex<double>>> Algorithms::getTensorProduct(
     rowNumber += matrixTwoRows;
   }
   return resultMatrix;
+}
+
+/* Algorithm returns True if matrix is Hermitian. False if it is not Hermitian.
+ */
+bool Algorithms::isHermitian(vector<vector<complex<double>>> matrix) {
+  // Get the size of the matrices to multiply
+  size_t matrixRows = matrix.size(), matrixColumns = matrix[0].size();
+
+  // Sets is Hermitian to true
+  bool isHermitian = true;
+
+  // Check to ensure matrices are able to be multiplied
+  if (matrixRows == matrixColumns) {
+    for (size_t i = 0; i < matrixRows; ++i) {
+      for (size_t j = 0; j < matrixColumns; ++j) {
+        // If the adjoint matrix does not equal the original, then the matrix is
+        // not hermitian
+        if (matrix[i][j] != getMod(matrix[j][i])) {
+          isHermitian = false;
+        }
+      }
+    }
+  } else {
+    throw runtime_error(
+        "Error - Hermitian Check: # of columns and rows must be the same to "
+        "check for Hermitian");
+  }
+
+  return isHermitian;
 }

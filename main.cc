@@ -59,7 +59,10 @@ void modTest() {
 
   complex<double> cNum(rNum, iNum);
 
-  cout << "The Modulo of the complex numbers is: " << algo.getMod(cNum) << endl;
+  complex<double> result = algo.getMod(cNum);
+
+  cout << "The Modulo of the complex numbers is: " << real(result) << " + ("
+       << imag(result) << "i)" << endl;
 }
 
 /** This is a test for getting the Conjugate of a complex number
@@ -346,6 +349,8 @@ int main() {
     // cout << "Tensor Product Test" << endl;
     // tensorProductTest();
 
+    // cout << "Is Hermitian Test" << endl;
+    // isHermitianTest();
   } catch (runtime_error e) {
     cout << e.what() << endl;
   }
