@@ -312,3 +312,27 @@ vector<vector<complex<double>>> Algorithms::getPauliMatriceZ() {
 
   return outerMatrix;
 }
+
+/* Hadamard Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getHadamard() {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+
+  complex<double> temp(real(1/sqrt(2)), imag(0));
+  innerMatrix.push_back(temp);
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+
+  innerMatrix.clear();
+
+  innerMatrix.push_back(temp);
+
+  temp.real(-1/sqrt(2));
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+
+  return outerMatrix;
+}

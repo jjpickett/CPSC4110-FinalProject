@@ -35,6 +35,7 @@ class Algorithms {
   vector<vector<complex<double>>> getPauliMatriceX();
   vector<vector<complex<double>>> getPauliMatriceY();
   vector<vector<complex<double>>> getPauliMatriceZ();
+  vector<vector<complex<double>>> getHadamard();
 
   virtual ~Algorithms(){};
 };
