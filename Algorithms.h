@@ -39,6 +39,7 @@ class Algorithms {
   vector<vector<complex<double>>> getQubitMatrix(int qubit);
 
   vector<vector<complex<double>>> getCNOT();
+  vector<vector<complex<double>>> getToffoli();
 
   virtual ~Algorithms(){};
 };
