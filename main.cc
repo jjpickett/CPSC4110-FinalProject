@@ -200,6 +200,8 @@ void complexVectorSumTest() {
        << imag(cNumAns) << "i)" << endl;
 }
 
+/** This is a test for getting the product of a complex matrix
+ */
 void matrixMultiplicationTest() {
   int matrixOneRows, matrixOneColumns, matrixTwoRows, matrixTwoColumns;
   double rNum, iNum;
@@ -259,6 +261,8 @@ void matrixMultiplicationTest() {
   }
 }
 
+/** This is a test for getting the Tensor Product of complex matrices
+ */
 void tensorProductTest() {
   int matrixOneRows, matrixOneColumns, matrixTwoRows, matrixTwoColumns;
   double rNum, iNum;
@@ -318,6 +322,25 @@ void tensorProductTest() {
   }
 }
 
+/** This is a test for getting the Pauli X Matrix
+ */
+void pauliTest(){
+  // *** Uncomment the line you wish to test
+  vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceX());
+  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceY());
+  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceZ());
+
+  cout << "Resulting Matrix:" << endl;
+
+  for (size_t i = 0; i < matrixOne.size(); ++i) {
+    for (size_t j = 0; j < matrixOne[0].size(); ++j) {
+      cout << utils.printComplexNumber(matrixOne[i][j]);
+    }
+    cout << endl;
+  }
+
+}
+
 // driver function
 int main() {
   // ***** Uncomment the function to test capability
@@ -351,6 +374,12 @@ int main() {
 
     // cout << "Is Hermitian Test" << endl;
     // isHermitianTest();
+
+
+    // *** This will run the Pauli Test. change which matrix you want in the function
+    // cout << "Pauli Test" << endl;
+    // pauliTest();
+
   } catch (runtime_error e) {
     cout << e.what() << endl;
   }

@@ -32,6 +32,10 @@ class Algorithms {
       vector<vector<complex<double>>> matrixTwo);
   bool isHermitian(vector<vector<complex<double>>> matrix);
 
+  vector<vector<complex<double>>> getPauliMatriceX();
+  vector<vector<complex<double>>> getPauliMatriceY();
+  vector<vector<complex<double>>> getPauliMatriceZ();
+
   virtual ~Algorithms(){};
 };
 #endif
