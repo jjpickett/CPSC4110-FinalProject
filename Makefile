@@ -20,7 +20,7 @@ deutsch : deutsch.o Algorithms.o Utils.o         ## next line must begin with a 
 	$(CC) $^ -o $@
 	
 ##./test									## UNCOMMENT AND TAB TO RUN IT
-##./cnot									## UNCOMMENT AND TAB TO RUN IT
+	./cnot									## UNCOMMENT AND TAB TO RUN IT
 ##./toffoli									## UNCOMMENT AND TAB TO RUN IT
 ##./deutsch									## UNCOMMENT AND TAB TO RUN IT
 

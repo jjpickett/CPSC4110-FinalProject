@@ -319,8 +319,7 @@ vector<vector<complex<double>>> Algorithms::getHadamard() {
   vector<vector<complex<double>>> outerMatrix;
   vector<complex<double>> innerMatrix;
 
-  complex<double> temp(real(1/sqrt(2)), imag(0));
-  innerMatrix.push_back(temp);
+  complex<double> temp(real(1 / sqrt(2)), imag(0));
   innerMatrix.push_back(temp);
 
   outerMatrix.push_back(innerMatrix);
@@ -329,10 +328,48 @@ vector<vector<complex<double>>> Algorithms::getHadamard() {
 
   innerMatrix.push_back(temp);
 
-  temp.real(-1/sqrt(2));
+  temp.real(-1 / sqrt(2));
   innerMatrix.push_back(temp);
 
   outerMatrix.push_back(innerMatrix);
+
+  return outerMatrix;
+}
+
+/* Get Qubit Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+  complex<double> temp(real(0), imag(0));
+
+  if (qubit) {
+    // Top
+    temp.real(0);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+    innerMatrix.clear();
+
+    // Bottom
+    temp.real(1);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+  } else {
+    cout << "Got Here: " << qubit << endl;
+    // Top
+    temp.real(1);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+    innerMatrix.clear();
+    
+    // Bottom
+    temp.real(0);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+  }
 
   return outerMatrix;
 }
