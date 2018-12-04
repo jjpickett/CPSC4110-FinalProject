@@ -338,6 +338,21 @@ void pauliTest(){
     }
     cout << endl;
   }
+}
+
+/** This is a test for getting the Hadamard Matrix
+ */
+void hadamardTest(){
+  vector<vector<complex<double>>> matrixOne(algo.getHadamard());
+
+  cout << "Resulting Matrix:" << endl;
+
+  for (size_t i = 0; i < matrixOne.size(); ++i) {
+    for (size_t j = 0; j < matrixOne[0].size(); ++j) {
+      cout << utils.printComplexNumber(matrixOne[i][j]);
+    }
+    cout << endl;
+  }
 
 }
 
@@ -379,6 +394,9 @@ int main() {
     // *** This will run the Pauli Test. change which matrix you want in the function
     // cout << "Pauli Test" << endl;
     // pauliTest();
+
+    // cout << "Hadamard Test" << endl;
+    // hadamardTest();
 
   } catch (runtime_error e) {
     cout << e.what() << endl;
