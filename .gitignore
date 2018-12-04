@@ -1,5 +1,8 @@
-main.o
 Algorithms.o
 Utils.o
+cnot.o
+deutsch.o
+toffoli.o
+test.o
 .vscode/settings.json
 main.exe

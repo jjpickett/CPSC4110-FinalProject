@@ -360,6 +360,8 @@ void hadamardTest(){
 int main() {
   // ***** Uncomment the function to test capability
   try {
+    cout << "Test is working!";
+
     // cout << "Sum Test" << endl;
     // sumTest();
 

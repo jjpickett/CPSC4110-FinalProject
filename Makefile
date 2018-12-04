@@ -1,23 +1,43 @@
+# Flags needed for all executables
 CC = g++
 CCFLAGS = -std=c++11 -Wall
-PRJ = main
-OBJS = main.o Algorithms.o Utils.o
-HEAD = Algorithms.h Utils.h
 
 ## targets and prerequisites
+.PHONY: all
+all : test cnot toffoli deutsch
 
-$(PRJ): $(OBJS)             ## next line must begin with a TAB
-		$(CC) $(OBJS) -o $(PRJ) 
-		./main
+test : test.o Algorithms.o Utils.o ## next line must begin with a TAB
+	$(CC) $^ -o $@
+##./test									## UNCOMMENT AND TAB TO RUN IT
 
-# rule for compiling .cc to .o
-%.o : %.cc                  ## next line must begin with a TAB
-		$(CC) -c $(CCFLAGS) $<
+cnot : cnot.o Algorithms.o Utils.o ## next line must begin with a TAB
+	$(CC) $^ -o $@
+##./cnot									## UNCOMMENT AND TAB TO RUN IT
 
-$(OBJS):$(HEAD)             ## no executable, the previous rule is used
+toffoli : toffoli.o Algorithms.o Utils.o         ## next line must begin with a TAB
+	$(CC) $^ -o $@
+##./toffoli									## UNCOMMENT AND TAB TO RUN IT
 
+deutsch : deutsch.o Algorithms.o Utils.o         ## next line must begin with a TAB
+	$(CC) $^ -o $@
+##./deutsch									## UNCOMMENT AND TAB TO RUN IT
+
+# default rule for compiling .cc to .o
+%.o: %.cc                               ## next line must begin with a TAB
+	$(CC) -c $(CCFLAGS) $< 
+
+Algorithms.o : Algorithms.h    ## no executables, the previous rule is used
+Utils.o : Utils.h
+test.o : Algorithms.h Utils.h
+cnot.o : Algorithms.h Utils.h
+toffoli.o : Algorithms.h Utils.h
+deutsch.o : Algorithms.h Utils.h
 
 .PHONY: clean
-clean:                      ## next lines must begin with a TAB
-		rm -f $(OBJS) $(PRJ)
-		rm -f *~ *% *# .#*
+clean:                 ## next lines must begin with a TAB
+	rm -f *.o
+	rm -f *~ *# .#*
+
+.PHONY: clean-all
+clean-all : clean      ## next line must begin with a TAB
+	rm -f test cnot toffoli deutsch
