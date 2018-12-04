@@ -325,8 +325,9 @@ void tensorProductTest() {
 /** This is a test for getting the Pauli X Matrix
  */
 void pauliTest(){
-  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceX());
-  vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceY());
+  // *** Uncomment the line you wish to test
+  vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceX());
+  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceY());
   // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceZ());
 
   cout << "Resulting Matrix:" << endl;
@@ -374,8 +375,10 @@ int main() {
     // cout << "Is Hermitian Test" << endl;
     // isHermitianTest();
 
-    cout << "Pauli X Test" << endl;
-    pauliTest();
+
+    // *** This will run the Pauli Test. change which matrix you want in the function
+    // cout << "Pauli Test" << endl;
+    // pauliTest();
 
   } catch (runtime_error e) {
     cout << e.what() << endl;

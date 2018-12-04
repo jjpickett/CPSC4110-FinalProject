@@ -287,7 +287,28 @@ vector<vector<complex<double>>> Algorithms::getPauliMatriceY() {
 /* Z Pauli Matrice
  */
 vector<vector<complex<double>>> Algorithms::getPauliMatriceZ() {
-  vector<vector<complex<double>>> matrix;
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
 
-  return matrix;
+  complex<double> temp(real(1), imag(0));
+  innerMatrix.push_back(temp);
+
+  temp.real(0);
+  temp.imag(0);
+
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+
+  innerMatrix.clear();
+
+  innerMatrix.push_back(temp);
+
+  temp.real(-1);
+  temp.imag(0);
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+
+  return outerMatrix;
 }
