@@ -9,12 +9,18 @@ using namespace std;
 Algorithms algo;
 Utils utils;
 
-void calculateCNOT(int topQubit, int bottomQubit) {
-  vector<vector<complex<double>>> matrixOne(algo.getQubitMatrix(topQubit));
+void calculateCNOT(int topQubit, int bttmQubit) {
+    // Get the qubits as matrices
+  vector<vector<complex<double>>> topQubitMatrix(algo.getQubitMatrix(topQubit));
+  vector<vector<complex<double>>> bttmQubitMatrix(algo.getQubitMatrix(bttmQubit));
 
-  for (size_t i = 0; i < matrixOne.size(); ++i) {
-    for (size_t j = 0; j < matrixOne[0].size(); ++j) {
-      cout << utils.printComplexNumber(matrixOne[i][j]);
+  vector<vector<complex<double>>> qubitTensorProduct(algo.getTensorProduct(topQubitMatrix, bttmQubitMatrix));
+  
+  vector<vector<complex<double>>> matrixResult(algo.getMatrixMultiplication(algo.getCNOT(), qubitTensorProduct));
+
+  for (size_t i = 0; i < matrixResult.size(); ++i) {
+    for (size_t j = 0; j < matrixResult[0].size(); ++j) {
+      cout << utils.printComplexNumber(matrixResult[i][j]);
     }
     cout << endl;
   }

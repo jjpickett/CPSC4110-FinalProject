@@ -357,7 +357,6 @@ vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
     outerMatrix.push_back(innerMatrix);
 
   } else {
-    cout << "Got Here: " << qubit << endl;
     // Top
     temp.real(1);
     innerMatrix.push_back(temp);
