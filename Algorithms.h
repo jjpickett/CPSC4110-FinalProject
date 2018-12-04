@@ -36,6 +36,9 @@ class Algorithms {
   vector<vector<complex<double>>> getPauliMatriceY();
   vector<vector<complex<double>>> getPauliMatriceZ();
   vector<vector<complex<double>>> getHadamard();
+  vector<vector<complex<double>>> getQubitMatrix(int qubit);
+
+  vector<vector<complex<double>>> getCNOT();
 
   virtual ~Algorithms(){};
 };

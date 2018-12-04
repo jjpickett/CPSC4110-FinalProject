@@ -319,8 +319,7 @@ vector<vector<complex<double>>> Algorithms::getHadamard() {
   vector<vector<complex<double>>> outerMatrix;
   vector<complex<double>> innerMatrix;
 
-  complex<double> temp(real(1/sqrt(2)), imag(0));
-  innerMatrix.push_back(temp);
+  complex<double> temp(real(1 / sqrt(2)), imag(0));
   innerMatrix.push_back(temp);
 
   outerMatrix.push_back(innerMatrix);
@@ -329,10 +328,94 @@ vector<vector<complex<double>>> Algorithms::getHadamard() {
 
   innerMatrix.push_back(temp);
 
-  temp.real(-1/sqrt(2));
+  temp.real(-1 / sqrt(2));
   innerMatrix.push_back(temp);
 
   outerMatrix.push_back(innerMatrix);
 
   return outerMatrix;
 }
+
+/* Get Qubit Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+  complex<double> temp(real(0), imag(0));
+
+  if (qubit) {
+    // Top
+    temp.real(0);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+    innerMatrix.clear();
+
+    // Bottom
+    temp.real(1);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+  } else {
+    // Top
+    temp.real(1);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+
+    innerMatrix.clear();
+    
+    // Bottom
+    temp.real(0);
+    innerMatrix.push_back(temp);
+    outerMatrix.push_back(innerMatrix);
+  }
+
+  return outerMatrix;
+}
+
+/* Get Qubit Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getCNOT() {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+  // TOP ROW
+  complex<double> temp(real(1), imag(0));
+  innerMatrix.push_back(temp); // [0][0] = 1
+  
+  temp.real(0);
+  innerMatrix.push_back(temp); // [0][1] = 0
+  innerMatrix.push_back(temp); // [0][2] = 0
+  innerMatrix.push_back(temp); // [0][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply First Row
+
+  innerMatrix.clear(); // Clear before adding
+  innerMatrix.push_back(temp); // [1][0] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [1][1] = 1
+  temp.real(0);
+  innerMatrix.push_back(temp); // [1][2] = 0
+  innerMatrix.push_back(temp); // [1][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply Second Row
+
+
+  innerMatrix.clear(); // Clear before adding
+  innerMatrix.push_back(temp); // [2][0] = 0
+  innerMatrix.push_back(temp); // [2][1] = 0
+  innerMatrix.push_back(temp); // [2][2] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [2][3] = 1
+  outerMatrix.push_back(innerMatrix); // Apply Third Row
+  
+  innerMatrix.clear(); // Clear before adding
+  temp.real(0);
+  innerMatrix.push_back(temp); // [3][0] = 0
+  innerMatrix.push_back(temp); // [3][1] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [3][2] = 1
+  temp.real(0);
+  innerMatrix.push_back(temp); // [3][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply Third Row
+
+  return outerMatrix;
+}
+
