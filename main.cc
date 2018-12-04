@@ -325,8 +325,8 @@ void tensorProductTest() {
 /** This is a test for getting the Pauli X Matrix
  */
 void pauliTest(){
-  vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceX());
-  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceY());
+  // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceX());
+  vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceY());
   // vector<vector<complex<double>>> matrixOne(algo.getPauliMatriceZ());
 
   cout << "Resulting Matrix:" << endl;
