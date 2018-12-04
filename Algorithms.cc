@@ -363,7 +363,7 @@ vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
     outerMatrix.push_back(innerMatrix);
 
     innerMatrix.clear();
-    
+
     // Bottom
     temp.real(0);
     innerMatrix.push_back(temp);
@@ -373,49 +373,50 @@ vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
   return outerMatrix;
 }
 
-/* Get Qubit Matrix
+/* Get CNOT Matrix
  */
 vector<vector<complex<double>>> Algorithms::getCNOT() {
   vector<vector<complex<double>>> outerMatrix;
   vector<complex<double>> innerMatrix;
-  // TOP ROW
+
   complex<double> temp(real(1), imag(0));
-  innerMatrix.push_back(temp); // [0][0] = 1
-  
-  temp.real(0);
-  innerMatrix.push_back(temp); // [0][1] = 0
-  innerMatrix.push_back(temp); // [0][2] = 0
-  innerMatrix.push_back(temp); // [0][3] = 0
-  outerMatrix.push_back(innerMatrix); // Apply First Row
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if ((i == 0 && j == 0) || (i == 1 && j == 1) || (i == 2 && j == 3) || (i == 3 && j == 2)){
+        temp.real(1);
+      }else{
+        temp.real(0);
+      }
 
-  innerMatrix.clear(); // Clear before adding
-  innerMatrix.push_back(temp); // [1][0] = 0
-  temp.real(1);
-  innerMatrix.push_back(temp); // [1][1] = 1
-  temp.real(0);
-  innerMatrix.push_back(temp); // [1][2] = 0
-  innerMatrix.push_back(temp); // [1][3] = 0
-  outerMatrix.push_back(innerMatrix); // Apply Second Row
-
-
-  innerMatrix.clear(); // Clear before adding
-  innerMatrix.push_back(temp); // [2][0] = 0
-  innerMatrix.push_back(temp); // [2][1] = 0
-  innerMatrix.push_back(temp); // [2][2] = 0
-  temp.real(1);
-  innerMatrix.push_back(temp); // [2][3] = 1
-  outerMatrix.push_back(innerMatrix); // Apply Third Row
-  
-  innerMatrix.clear(); // Clear before adding
-  temp.real(0);
-  innerMatrix.push_back(temp); // [3][0] = 0
-  innerMatrix.push_back(temp); // [3][1] = 0
-  temp.real(1);
-  innerMatrix.push_back(temp); // [3][2] = 1
-  temp.real(0);
-  innerMatrix.push_back(temp); // [3][3] = 0
-  outerMatrix.push_back(innerMatrix); // Apply Third Row
+      innerMatrix.push_back(temp);
+    }
+    outerMatrix.push_back(innerMatrix);
+    innerMatrix.clear();
+  }
 
   return outerMatrix;
 }
 
+/* Get Toffoli Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getToffoli() {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+
+  complex<double> temp(real(1), imag(0));
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (((i == j) && (i < 6)) || ((i == 6 && j == 7) || (i == 7 && j == 6))) {
+        temp.real(1);
+      }else{
+        temp.real(0);
+      }
+
+      innerMatrix.push_back(temp);
+    }
+    outerMatrix.push_back(innerMatrix);
+    innerMatrix.clear();
+  }
+
+  return outerMatrix;
+}
