@@ -38,6 +38,8 @@ class Algorithms {
   vector<vector<complex<double>>> getHadamard();
   vector<vector<complex<double>>> getQubitMatrix(int qubit);
 
+  vector<vector<complex<double>>> getCNOT();
+
   virtual ~Algorithms(){};
 };
 #endif

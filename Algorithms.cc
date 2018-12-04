@@ -373,3 +373,50 @@ vector<vector<complex<double>>> Algorithms::getQubitMatrix(int qubit) {
 
   return outerMatrix;
 }
+
+/* Get Qubit Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getCNOT() {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+  // TOP ROW
+  complex<double> temp(real(1), imag(0));
+  innerMatrix.push_back(temp); // [0][0] = 1
+  
+  temp.real(0);
+  innerMatrix.push_back(temp); // [0][1] = 0
+  innerMatrix.push_back(temp); // [0][2] = 0
+  innerMatrix.push_back(temp); // [0][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply First Row
+
+  innerMatrix.clear(); // Clear before adding
+  innerMatrix.push_back(temp); // [1][0] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [1][1] = 1
+  temp.real(0);
+  innerMatrix.push_back(temp); // [1][2] = 0
+  innerMatrix.push_back(temp); // [1][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply Second Row
+
+
+  innerMatrix.clear(); // Clear before adding
+  innerMatrix.push_back(temp); // [2][0] = 0
+  innerMatrix.push_back(temp); // [2][1] = 0
+  innerMatrix.push_back(temp); // [2][2] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [2][3] = 1
+  outerMatrix.push_back(innerMatrix); // Apply Third Row
+  
+  innerMatrix.clear(); // Clear before adding
+  temp.real(0);
+  innerMatrix.push_back(temp); // [3][0] = 0
+  innerMatrix.push_back(temp); // [3][1] = 0
+  temp.real(1);
+  innerMatrix.push_back(temp); // [3][2] = 1
+  temp.real(0);
+  innerMatrix.push_back(temp); // [3][3] = 0
+  outerMatrix.push_back(innerMatrix); // Apply Third Row
+
+  return outerMatrix;
+}
+
