@@ -225,3 +225,47 @@ bool Algorithms::isHermitian(vector<vector<complex<double>>> matrix) {
 
   return isHermitian;
 }
+
+/* X Pauli Matrice
+ */
+vector<vector<complex<double>>> Algorithms::getPauliMatriceX() {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+
+  complex<double> temp(real(0), imag(0));
+  innerMatrix.push_back(temp);
+
+  temp.real(1);
+  temp.imag(0);
+
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+  innerMatrix.clear();
+
+  innerMatrix.push_back(temp);
+
+  temp.real(0);
+  temp.imag(0);
+  innerMatrix.push_back(temp);
+
+  outerMatrix.push_back(innerMatrix);
+
+  return outerMatrix;
+}
+
+/* Y Pauli Matrice
+ */
+vector<vector<complex<double>>> Algorithms::getPauliMatriceY() {
+  vector<vector<complex<double>>> matrix;
+
+  return matrix;
+}
+
+/* Z Pauli Matrice
+ */
+vector<vector<complex<double>>> Algorithms::getPauliMatriceZ() {
+  vector<vector<complex<double>>> matrix;
+
+  return matrix;
+}
