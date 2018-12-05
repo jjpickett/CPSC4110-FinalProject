@@ -382,9 +382,10 @@ vector<vector<complex<double>>> Algorithms::getCNOT() {
   complex<double> temp(real(1), imag(0));
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      if ((i == 0 && j == 0) || (i == 1 && j == 1) || (i == 2 && j == 3) || (i == 3 && j == 2)){
+      if ((i == 0 && j == 0) || (i == 1 && j == 1) || (i == 2 && j == 3) ||
+          (i == 3 && j == 2)) {
         temp.real(1);
-      }else{
+      } else {
         temp.real(0);
       }
 
@@ -408,8 +409,55 @@ vector<vector<complex<double>>> Algorithms::getToffoli() {
     for (int j = 0; j < 8; j++) {
       if (((i == j) && (i < 6)) || ((i == 6 && j == 7) || (i == 7 && j == 6))) {
         temp.real(1);
-      }else{
+      } else {
         temp.real(0);
+      }
+
+      innerMatrix.push_back(temp);
+    }
+    outerMatrix.push_back(innerMatrix);
+    innerMatrix.clear();
+  }
+
+  return outerMatrix;
+}
+
+/* Generate Uf Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getUFMatrix(int func0, int func1) {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+
+  complex<double> temp(real(0), imag(0));
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      // If f(x) is a constant 0
+      if ((func0 == 0) && (func1 == 0)) {
+        if (i == j) {
+          temp.real(1);
+        } else {
+          temp.real(0);
+        }
+
+      } else if ((func0 == 0) && (func1 == 1)) {
+        if (((i == j) && i < 2) || (i == 2 && j == 3) || (i == 3 && j == 2)) {
+          temp.real(1);
+        } else {
+          temp.real(0);
+        }
+      } else if ((func0 == 1) && (func1 == 0)) {
+        if ((i == 0 && j == 1) || (i == 1 && j == 0) || ((i == j) && i > 1)) {
+          temp.real(1);
+        } else {
+          temp.real(0);
+        }
+      } else {
+        if ((i == 0 && j == 1) || (i == 1 && j == 0) || (i == 2 && j == 3) ||
+            (i == 3 && j == 2)) {
+          temp.real(1);
+        } else {
+          temp.real(0);
+        }
       }
 
       innerMatrix.push_back(temp);

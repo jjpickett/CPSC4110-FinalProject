@@ -40,6 +40,7 @@ class Algorithms {
 
   vector<vector<complex<double>>> getCNOT();
   vector<vector<complex<double>>> getToffoli();
+  vector<vector<complex<double>>> getUFMatrix(int func0, int func1);
 
   virtual ~Algorithms(){};
 };
