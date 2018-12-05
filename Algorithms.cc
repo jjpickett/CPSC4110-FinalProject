@@ -321,6 +321,7 @@ vector<vector<complex<double>>> Algorithms::getHadamard() {
 
   complex<double> temp(real(1 / sqrt(2)), imag(0));
   innerMatrix.push_back(temp);
+  innerMatrix.push_back(temp);
 
   outerMatrix.push_back(innerMatrix);
 
@@ -458,6 +459,30 @@ vector<vector<complex<double>>> Algorithms::getUFMatrix(int func0, int func1) {
         } else {
           temp.real(0);
         }
+      }
+
+      innerMatrix.push_back(temp);
+    }
+    outerMatrix.push_back(innerMatrix);
+    innerMatrix.clear();
+  }
+
+  return outerMatrix;
+}
+
+/* Get Identity Matrix
+ */
+vector<vector<complex<double>>> Algorithms::getIdentityMatrix(int size) {
+  vector<vector<complex<double>>> outerMatrix;
+  vector<complex<double>> innerMatrix;
+
+  complex<double> temp(real(1), imag(0));
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
+      if ((i == j)) {
+        temp.real(1);
+      } else {
+        temp.real(0);
       }
 
       innerMatrix.push_back(temp);
